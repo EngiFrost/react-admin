@@ -4,13 +4,13 @@ import jsonServerProvider from 'ra-data-json-server';
 import UserListView from './UserListView';
 import UserEditView from './UserEditView';
 import UserCreateView from './UserCreateView';
-
+import AuthProvider from '../auth/AuthProvider';
 
 const App: React.FC = () => {
-  const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
+  const DataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 
   return (
-    <Admin dataProvider={dataProvider}>
+    <Admin dataProvider={DataProvider} authProvider={AuthProvider}>
       <Resource name="users" list={UserListView} edit={UserEditView} create={UserCreateView} />
     </Admin>
   );
